@@ -4,6 +4,8 @@
 
 A simple todo list application build with rails, vue.js, webpack and postcss
 
+[Demo](https://ghoulish-spirit-6368.herokuapp.com)
+
 ## Development
 
 you just need to clone this repository, then install all dependencies.
