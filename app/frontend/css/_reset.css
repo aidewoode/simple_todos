@@ -1,0 +1,16 @@
+html {
+  box-sizing: border-box;
+  font-size: $default-root-font-size;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $background-color;
+  font-family: $default-font-family;
+  background-image: url('../img/background.png');
+}

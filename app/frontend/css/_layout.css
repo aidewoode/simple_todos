@@ -1,0 +1,63 @@
+.status-bar {
+  display: flex;
+  width: 100%;
+  padding: 0 1.67rem;
+  height: 2rem;
+  margin-top: 1.67rem;
+}
+
+.logout-button {
+  align-self: center;
+}
+
+.site-title {
+  font-family: 'Lato-Light';
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 5rem;
+  color: $main-color;
+}
+
+.login-form,
+.signup-form {
+  text-align: center;
+  margin-top: 1.67rem;
+  font-size: .95rem;
+  padding-bottom: 1.94rem;
+}
+
+.form-item {
+  margin-bottom: .83rem;
+}
+
+.form-item__input {
+  border-radius: .55rem;
+  background-color: #fbfbfb;
+  outline: none;
+  border: 1px solid #eee;
+  padding: .27rem .55rem;
+  width: 65%;
+}
+
+.form-item__input:focus {
+  background-color: #eee;
+}
+
+.btn {
+  padding: .27rem .83rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: .55rem;
+}
+
+.btn__submit {
+  width: 65%;
+  background-color: $main-color;
+}
+
+.error-message {
+  color: $alert-color;
+  margin-top: 1.1rem;
+  font-size: .8rem;
+}

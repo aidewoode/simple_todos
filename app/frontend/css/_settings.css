@@ -1,0 +1,7 @@
+$background-color: rgb(255, 255, 255);
+$main-color: rgb(88, 178, 220);
+$alert-color: rgb(219, 77, 109);
+
+$default-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB","Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif !default;
+
+$default-root-font-size: 18px;
