@@ -1,7 +1,7 @@
 <template lang='jade'>
  .site-content
    .status-bar
-     i.icon.icon--off.logout-button(v-if='isAuth' v-on='click: logout')
+     i.icon.icon--off.logout-button(v-if='isAuth' @click='logout')
      loader(v-if='loading')
    .site-title Simple Todos
    router-view

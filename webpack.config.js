@@ -21,7 +21,9 @@ module.exports = {
   },
 
   vue: {
-    css: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+    loaders: {
+      css: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+    }
   },
 
   plugins: [

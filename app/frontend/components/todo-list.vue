@@ -1,16 +1,15 @@
 <template lang='jade'>
-input.todo-list__create(placeholder='Create your todos...' v-model='newTodo' v-on="keyup: createTodo | key 'enter'")
+input.todo-list__create(placeholder='Create your todos...' v-model='newTodo' @keyup.enter='createTodo')
 ul.todo-list__items
-  li.todo-list__item(v-repeat='todo in todos')
+  li.todo-list__item(v-for='todo in todos')
     .todo-list__check(class="{{todo.checked ? 'checked': ''}}")
-      i.icon.icon--check(v-on='click: check(todo)')
+      i.icon.icon--check(@click='check(todo)')
     .todo-list__content(class="{{todo.checked ? 'checked': ''}}") {{todo.body}}
     .todo-list__remove
-      i.icon.icon--remove(v-on='click: removeTodo(todo)')
+      i.icon.icon--remove(@click='removeTodo(todo)')
 </template>
 <script>
   module.exports = {
-    inherit: true,
     data: function() {
       return {
         todos: null,
@@ -27,7 +26,7 @@ ul.todo-list__items
 
     methods: {
       createTodo: function() {
-        this.$set('loading', true);
+        this.startLoading();
 
         var todo = {
           task: {
@@ -40,18 +39,19 @@ ul.todo-list__items
         var resource = this.$resource('tasks');
         resource.save(todo, function(data, _status, _request) {
           this.todos.push(data.task);
-          this.$set('loading', false);
+          this.stopLoading();
         }).error(function(_data, _status, _request) {
-          this.$set('loading', false);
+          this.stopLoading();
         });
       },
 
       removeTodo: function(todo) {
-        this.$set('loading', true);
+        this.startLoading();
+
         var resource = this.$resource('tasks/:id');
         resource.delete({id: todo.id}, function(_data, _status, _request) {
           this.todos.$remove(todo);
-          this.$set('loading', false);
+          this.stopLoading();
         });
       },
 

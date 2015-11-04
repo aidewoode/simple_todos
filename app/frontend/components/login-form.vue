@@ -4,14 +4,12 @@
       input.form-item__input(type='text' placeholder='Email' v-model='email')
     .form-item
       input.form-item__input(type='password' placeholder='Password' v-model='password')
-    button.btn.btn__submit(v-on='click: login') Login
+    button.btn.btn__submit(@click='login') Login
     .error-message
       {{errorMessage}}
 </template>
 <script>
   module.exports = {
-    inherit: true,
-
     data: function() {
       return {
         email: null,
@@ -22,7 +20,7 @@
 
     methods: {
       login: function() {
-        this.$set('loading', true);
+        this.startLoading();
 
         var loginData = {
           email: this.email,
@@ -31,12 +29,11 @@
 
         var resource = this.$resource('auth');
         resource.save(loginData, function(data, _status, _request) {
-          require('js-cookie').set('auth_token', data.token)
-          this.$set('authToken', data.token);
-          this.$set('loading', false);
+          this.setAuthToken(data.token);
+          this.stopLoading();
         }).error(function(data, _status, _request) {
           this.$set('errorMessage', data.error);
-          this.$set('loading', false);
+          this.stopLoading();
         });
       }
     }

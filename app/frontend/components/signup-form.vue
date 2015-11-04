@@ -6,14 +6,12 @@
       input.form-item__input(type='password' placeholder='Password' v-model='password')
     .form-item
       input.form-item__input(type='password' placeholder='Password Confirm' v-model='passwordConfirmation')
-    button.btn.btn__submit(v-on='click: createUser') Signup
+    button.btn.btn__submit(@click='createUser') Signup
     .error-message
       {{errorMessage}}
 </template>
 <script>
   module.exports = {
-    inherit: true,
-
     data: function() {
       return {
         email: null,
@@ -25,7 +23,7 @@
 
     methods: {
       createUser: function() {
-        this.$set('loading', true);
+        this.startLoading();
 
         var user = {
           user: {
@@ -37,12 +35,11 @@
 
         var resource = this.$resource('users');
         resource.save(user, function(data, _status, _request) {
-          require('js-cookie').set('auth_token', data.token);
-          this.$set('authToken', data.token);
-          this.$set('loading', false);
+          this.setAuthToken(data.token);
+          this.stopLoading();
         }).error(function(data, _status, _request) {
           this.$set('errorMessage', data.error);
-          this.$set('loading', false);
+          this.stopLoading();
         });
       }
     }

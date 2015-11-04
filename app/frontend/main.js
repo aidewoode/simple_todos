@@ -11,6 +11,9 @@ Vue.use(VueResource);
 
 var router = new VueRouter();
 
+// set mixin
+require('./mixin')(Vue);
+
 // config router
 require('./routers')(router);
 

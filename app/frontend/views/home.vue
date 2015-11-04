@@ -1,17 +1,15 @@
 <template lang='jade'>
-  .user-form(v-if='!isAuth')
+  .user-form(v-if='!$root.isAuth')
     ul.user-form__nav
-      li.user-form__nav__item(v-on='click: isLogin = !isLogin' class="{{isLogin ? 'active': '' }}") Login
-      li.user-form__nav__item(v-on='click: isLogin = !isLogin' class="{{isLogin ? '': 'active' }}") SignUp
+      li.user-form__nav__item(@click='isLogin = !isLogin' class="{{isLogin ? 'active': '' }}") Login
+      li.user-form__nav__item(@click='isLogin = !isLogin' class="{{isLogin ? '': 'active' }}") SignUp
     login-form(v-if='isLogin')
     signup-form(v-if='!isLogin')
-  .todo-list(v-if='isAuth')
+  .todo-list(v-if='$root.isAuth')
     todo-list
 </template>
 <script>
   module.exports = {
-    inherit: true,
-
     data: function() {
       return {
         isLogin: true
