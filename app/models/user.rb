@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def generate_jwt
-    JWT.encode({ data: email }, ENV['AUTH_SECRET_KEY'], 'HS256')
+    expireTime = 24.hours.from_now
+
+    JWT.encode({ data: email, exp: expireTime.to_i }, ENV['AUTH_SECRET_KEY'], 'HS256')
   end
 end

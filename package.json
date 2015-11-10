@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "jade": "^1.11.0",
-    "js-cookie": "^2.0.4",
     "normalize.css": "^3.0.3",
     "vue": "^1.0.4",
     "vue-resource": "^0.1.16",

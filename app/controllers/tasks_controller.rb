@@ -46,6 +46,6 @@ class TasksController < ApplicationController
   end
 
   def authenticate
-    render head :unauthorized unless auth?
+    head :unauthorized unless auth?
   end
 end

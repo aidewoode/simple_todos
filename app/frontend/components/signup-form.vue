@@ -6,7 +6,7 @@
       input.form-item__input(type='password' placeholder='Password' v-model='password')
     .form-item
       input.form-item__input(type='password' placeholder='Password Confirm' v-model='passwordConfirmation')
-    button.btn.btn__submit(@click='createUser') Signup
+    button.btn.btn__submit(@click='createUser') SignUp
     .error-message
       {{errorMessage}}
 </template>

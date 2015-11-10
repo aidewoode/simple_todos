@@ -9,15 +9,17 @@
 <script>
   module.exports = {
     data: function() {
+      var authToken = this.getAuthToken();
+
       return {
-        authToken: require('js-cookie').get('auth_token'),
+        authToken: authToken,
         loading: false
       };
     },
 
     computed: {
       isAuth: function() {
-        return this.authToken !== undefined
+        return this.authToken !== ''
       }
     },
 
@@ -27,8 +29,8 @@
 
     methods: {
       logout: function() {
-        this.$set('authToken', undefined);
-        require('js-cookie').remove('auth_token');
+        this.$set('authToken', '');
+        this.clearAuthToken();
       }
     }
   }

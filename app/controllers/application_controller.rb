@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   def current_user
-    return nil unless cookies[:auth_token]
-    decoded_token = JWT.decode cookies[:auth_token], ENV['AUTH_SECRET_KEY'], true, { algorithm: 'HS256' }
-    email = decoded_token[0]['data']
+    auth_token = request.headers["Authorization"]
+    return nil unless auth_token
 
+    begin
+      decoded_token = JWT.decode auth_token, ENV['AUTH_SECRET_KEY'], true, { algorithm: 'HS256' }
+    rescue
+      return nil
+    end
+
+    email = decoded_token[0]['data']
     User.find_by_email(email)
   end
 

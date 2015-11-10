@@ -18,9 +18,13 @@ ul.todo-list__items
     },
 
     ready: function() {
+      this.$http.headers.common['Authorization'] = this.$root.authToken
       var resource = this.$resource('tasks');
+
       resource.get(function(data, _status, _request) {
         this.$set('todos', data.todos);
+      }).error(function(_data, status, _request){
+        this.errorHandle(status);
       });
     },
 
@@ -40,7 +44,8 @@ ul.todo-list__items
         resource.save(todo, function(data, _status, _request) {
           this.todos.push(data.task);
           this.stopLoading();
-        }).error(function(_data, _status, _request) {
+        }).error(function(_data, status, _request) {
+          this.errorHandle(status);
           this.stopLoading();
         });
       },
@@ -52,13 +57,18 @@ ul.todo-list__items
         resource.delete({id: todo.id}, function(_data, _status, _request) {
           this.todos.$remove(todo);
           this.stopLoading();
+        }).error(function(_data, status, _request) {
+          this.errorHandle(status);
+          this.stopLoading();
         });
       },
 
       check: function(todo) {
         var resource = this.$resource('check');
         todo.checked = !todo.checked
-        resource.save({id: todo.id});
+        resource.save({id: todo.id}).error(function(_data, status, _request) {
+          this.errorHandle(status);
+        });
       }
     }
   }
