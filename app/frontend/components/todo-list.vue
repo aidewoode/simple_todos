@@ -1,7 +1,7 @@
 <template lang='jade'>
 input.todo-list__create(placeholder='Create your todos...' v-model='newTodo' @keyup.enter='createTodo')
 ul.todo-list__items
-  li.todo-list__item(v-for='todo in todos')
+  li.todo-list__item(v-for="todo in todos | orderBy 'created_at' -1")
     .todo-list__check(class="{{todo.checked ? 'checked': ''}}")
       i.icon.icon--check(@click='check(todo)')
     .todo-list__content(class="{{todo.checked ? 'checked': ''}}") {{todo.body}}
