@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
-  <title>Simple Todos</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-</head>
-<body>
+  <head>
+    <title>SimpleTodos</title>
+    <%= csrf_meta_tags %>
 
-<%= yield %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>

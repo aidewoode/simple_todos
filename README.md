@@ -1,27 +1,24 @@
-# Simple Todos
+# README
 
-## Introduction
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-A simple todo list application build with rails, vue.js, webpack and postcss
+Things you may want to cover:
 
-[Demo](https://ghoulish-spirit-6368.herokuapp.com)
+* Ruby version
 
-## Development
+* System dependencies
 
-you just need to clone this repository, then install all dependencies.
-Before you do this, you should install npm and webpack.
+* Configuration
 
-```shell
-  $ bundle
-  $ npm install
-```
-Then migrate database
+* Database creation
 
-```shell
-  $ rake db:migrate
-```
-Finally bundle assets
+* Database initialization
 
-```shell
-  $ webpack
-```
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
